@@ -1,0 +1,16 @@
+server:
+  port: 8882
+
+spring:
+  #Native Elasticsearch binary协议，也就是Transport client配置项
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch # 集群名
+      cluster-nodes: 127.0.0.1:9300 # 集群节点
+  #HTTP协议，支持的客户端有Jest client和Rest client
+  elasticsearch:
+#    jest:
+#      uris: http://localhost:9200
+    rest:
+      uris: http://localhost:9200
+
