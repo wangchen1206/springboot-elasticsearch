@@ -9,10 +9,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Optional;
@@ -29,7 +28,22 @@ public class ProductRepositoryTest {
     private OrderRepository orderRepository;
 
     @Autowired
-    private ElasticsearchTemplate elasticsearchTemplate;
+    private ElasticsearchRestTemplate restTemplate;
+
+    @Test
+    public void testInsert1(){
+//        ESProductDO product = new ESProductDO();
+//        product.setId(3); // 一般 ES 的 ID 编号，使用 DB 数据对应的编号。这里，先写死
+//        product.setName("芋道源码");
+//        product.setSellPoint("愿半生编码，如一生老友");
+//        product.setDescription("我只是一个描述");
+//        product.setCid(1);
+//        product.setCategoryName("技术");
+//        log.info("Insert one record into es: "+product);
+        boolean test = restTemplate.indexExists("test");
+        System.out.println(test);
+
+    }
 
     @Test // 插入一条记录
     public void testInsert() {
