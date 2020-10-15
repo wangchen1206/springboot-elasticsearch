@@ -24,17 +24,17 @@ public class ESProductDO {
     /**
      * SPU 名字
      */
-    @Field(analyzer = FieldAnalyzer.IK_MAX_WORD, type = FieldType.Text)
+    @Field(analyzer = FieldAnalyzer.IK_MAX_WORD,type = FieldType.Text,searchAnalyzer = FieldAnalyzer.IK_MAX_WORD)
     private String name;
     /**
      * 卖点
      */
-    @Field(analyzer = FieldAnalyzer.IK_MAX_WORD, type = FieldType.Text)
+    @Field(analyzer = FieldAnalyzer.IK_MAX_WORD,type = FieldType.Text,searchAnalyzer = FieldAnalyzer.IK_MAX_WORD)
     private String sellPoint;
     /**
      * 描述
      */
-    @Field(analyzer = FieldAnalyzer.IK_MAX_WORD, type = FieldType.Text)
+    @Field(analyzer = FieldAnalyzer.IK_MAX_WORD,type = FieldType.Text,searchAnalyzer = FieldAnalyzer.IK_MAX_WORD)
     private String description;
     /**
      * 分类编号
@@ -43,7 +43,7 @@ public class ESProductDO {
     /**
      * 分类名
      */
-    @Field(analyzer = FieldAnalyzer.IK_MAX_WORD, type = FieldType.Text)
+    @Field(analyzer = FieldAnalyzer.IK_MAX_WORD,type = FieldType.Text,searchAnalyzer = FieldAnalyzer.IK_MAX_WORD)
     private String categoryName;
 
     // 省略 setting/getting 方法

@@ -26,7 +26,7 @@ public class ESOrderDO {
     @Id
     private Integer id;
 
-    @Field(analyzer = FieldAnalyzer.IK_MAX_WORD,type = FieldType.Text)
+    @Field(analyzer = FieldAnalyzer.IK_MAX_WORD,type = FieldType.Text,searchAnalyzer = FieldAnalyzer.IK_MAX_WORD)
     private String productName;
 
     private List<String> tests;

@@ -17,6 +17,8 @@ spring:
 #      uris: http://localhost:9200
     rest:
       uris: http://localhost:9200
+#      username:
+#      password:
 
 logging:
   config: classpath:logback-spring.xml # 自定义logback配置，增加文件滚动式配置

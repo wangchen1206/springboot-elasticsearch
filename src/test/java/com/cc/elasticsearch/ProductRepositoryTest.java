@@ -5,6 +5,8 @@ import com.cc.elasticsearch.es.ESProductDO;
 import com.cc.elasticsearch.es.OrderRepository;
 import com.cc.elasticsearch.es.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.elasticsearch.index.query.MatchQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,14 +34,6 @@ public class ProductRepositoryTest {
 
     @Test
     public void testInsert1(){
-//        ESProductDO product = new ESProductDO();
-//        product.setId(3); // 一般 ES 的 ID 编号，使用 DB 数据对应的编号。这里，先写死
-//        product.setName("芋道源码");
-//        product.setSellPoint("愿半生编码，如一生老友");
-//        product.setDescription("我只是一个描述");
-//        product.setCid(1);
-//        product.setCategoryName("技术");
-//        log.info("Insert one record into es: "+product);
         boolean test = restTemplate.indexExists("test");
         System.out.println(test);
 
@@ -51,8 +45,8 @@ public class ProductRepositoryTest {
         product.setId(3); // 一般 ES 的 ID 编号，使用 DB 数据对应的编号。这里，先写死
         product.setName("芋道源码");
         product.setSellPoint("愿半生编码，如一生老友");
-        product.setDescription("我只是一个描述");
-        product.setCid(1);
+        product.setDescription("只是一个描述");
+        product.setCid(4);
         product.setCategoryName("技术");
         log.info("Insert one record into es: "+product);
         productRepository.save(product);
@@ -86,6 +80,12 @@ public class ProductRepositoryTest {
     public void testSelectByIds() {
         Iterable<ESProductDO> users = productRepository.findAllById(Arrays.asList(1, 2));
         users.forEach(System.out::println);
+    }
+
+    @Test
+    public void testSelectOndition(){
+        Iterable<ESProductDO> search = productRepository.search(new MatchQueryBuilder("cid", "4"));
+        search.forEach(System.out::println);
     }
 
     @Test
